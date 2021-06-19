@@ -93,14 +93,7 @@ def images():
     
     browser.quit()
     
-    return hemisphere_image_urls 
-
-
-  
-
-
-
-
+    return hemisphere_image_urls   
 
 
 def scrape():
