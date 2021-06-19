@@ -24,7 +24,7 @@
   <div class="col-md-6">
     <div id="image" class="">
         <h2>Featured Mars Image</h2>
-        <img  src = {{mars.image}} alt="Mars Image">
+        <img  src = {{mars.image}} alt="Mars Image"/>
      </div>
   </div>
 
@@ -40,13 +40,18 @@
       <h2 class='text-center'>Mars Hemispheres</h2>
       <hr>
       
-        {% for item in mars %}
-        <div class="col-md-3">
-            <div class="">
-                <img src={{mars.img_url }}>
-                 <p class="text-center">{{mars.img_title}}</p>
+        {% for item in mars.hemisphere_image_urls %}
+            <div class="col-md-3">
+                <div class="card mb-4 box-shadow">
+                    <img class = 'card-img-top'
+                    src={{item.img_url}}
+                    style="height:250px; width:250px; display: block;"
+                    data-holder-rendered = 'true'/>
+                    <div class = 'card-body'>
+                        <h3 class="card-text">{{item.title}}</h3>
+                    </div>
+                </div>
             </div>
-        </div>
         {% endfor %}
     </div>
 
