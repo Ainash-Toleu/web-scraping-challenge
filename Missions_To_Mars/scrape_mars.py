@@ -3,36 +3,36 @@ from bs4 import BeautifulSoup
 from webdriver_manager.chrome import ChromeDriverManager
 import pandas as pd
 
-# def title():
-#     executable_path = {'executable_path': ChromeDriverManager().install()}
-#     browser = Browser('chrome', **executable_path, headless=False)
+def title():
+    executable_path = {'executable_path': ChromeDriverManager().install()}
+    browser = Browser('chrome', **executable_path, headless=False)
 
-#     nasa_url = 'https://redplanetscience.com/'
-#     browser.visit(nasa_url)
+    nasa_url = 'https://redplanetscience.com/'
+    browser.visit(nasa_url)
 
-#     html = browser.html
-#     soup = BeautifulSoup(html, "lxml")
+    html = browser.html
+    soup = BeautifulSoup(html, "html.parser")
 
-#     title = soup.find('div', class_='content_title').get_text()
+    title = soup.find("div", class_="content_title").text
 
-#     browser.quit()
+    browser.quit()
 
-#     return title
+    return title
 
-# def text():
-#     executable_path = {'executable_path': ChromeDriverManager().install()}
-#     browser = Browser('chrome', **executable_path, headless=False)
+def text():
+    executable_path = {'executable_path': ChromeDriverManager().install()}
+    browser = Browser('chrome', **executable_path, headless=False)
 
-#     nasa_url = 'https://redplanetscience.com/'
-#     browser.visit(nasa_url)
-#     html = browser.html
-#     soup = BeautifulSoup(html, "lxml")
+    nasa_url = 'https://redplanetscience.com/'
+    browser.visit(nasa_url)
+    html = browser.html
+    soup = BeautifulSoup(html, "html.parser")
 
-#     text = soup.find('div', class_='article_teaser_body').get_text()
+    text = soup.find("div", class_="article_teaser_body").text
 
-#     browser.quit()
+    browser.quit()
 
-#     return text
+    return text
 
 def image():
     executable_path = {'executable_path': ChromeDriverManager().install()}
@@ -90,6 +90,7 @@ def images():
         image = soup.find("img", class_="wide-image")['src']
         title = soup.find("h2", class_="title").text
         hemisphere_image_urls.append({"title": title, "img_url": astrogeology_url + image})
+    
     browser.quit()
     
     return hemisphere_image_urls 
@@ -104,8 +105,8 @@ def images():
 
 def scrape():
     mars = {}
-    # mars["title"] = title()
-    # mars["text"] = text()
+    mars["title"] = title()
+    mars["text"] = text()
     mars['image'] = image()
     mars['table'] = table()
     mars['hemisphere_image_urls'] = images()
