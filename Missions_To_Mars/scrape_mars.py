@@ -59,9 +59,10 @@ def table():
     df = tables[0]
     df.columns = ['Description', 'Mars', 'Earth']   
 
-    mars_html = df.to_html(index = False)
+    mars_html = df.to_html(index = False, classes='table table-striped table-md')
     
     return mars_html
+    
 
 def images():
     executable_path = {'executable_path': ChromeDriverManager().install()}
@@ -110,4 +111,6 @@ def scrape():
     mars['hemisphere_image_urls'] = images()
 
     return mars
+
+
     
